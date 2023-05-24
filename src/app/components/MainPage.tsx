@@ -2,9 +2,7 @@
 
 import { SearchBar } from './SearchBar';
 import styles from '../page.module.css'
-// import { SearchBar } from './components/SearchBar'
 import { useState, useEffect } from 'react'
-// import useFetch from './hooks/useFetch'
 // import DrinkList from './components/DrinkList'
 
 export default function MainPage({ children } : {children : React.ReactNode}) {
