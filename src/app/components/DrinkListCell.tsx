@@ -6,6 +6,7 @@ import rawDrinkDataParser from "../helperFunctions/rawDrinkDataParser";
 
 type formattedDataProps = {
   name: string;
+  thumbnail: string;
   instructions: string;
   ingredients: string[],
   colors: string[],
@@ -70,7 +71,7 @@ const DrinkListCell = ({ drinkName, drinkThumbnail, singleRawDrinkData,
 
     // parse raw data for drink
     const recipeData = rawDrinkDataParser(singleRawDrinkData as RawDrinkDataProp);
-    console.log('parsed single recipe data: ', recipeData);
+    // console.log('parsed single recipe data: ', recipeData);
     // setRecipeData using parsed data
     setRecipeData(recipeData);
     setRecipeActive(true);

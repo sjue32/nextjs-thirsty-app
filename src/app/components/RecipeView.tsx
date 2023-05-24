@@ -14,6 +14,7 @@ type DrinkDataProp = {
 
 type formattedDataProps = {
   name: string;
+  thumbnail: string;
   instructions: string;
   ingredients: string[],
   colors: string[],
@@ -36,16 +37,18 @@ export default function RecipeView({ recipeData, mobileRecipeViewActive, setMobi
             <div className={styles.empty_div}></div>
           </section>
       </div>
-      <RecipeViewImage 
-        className={styles.recipe_view_image}
-        src='https://www.thecocktaildb.com/images/media/drink/967t911643844053.jpg/preview'
-      />
-      <p>{recipeData.name}</p>
-      <IngredientsComponent
-        className={styles.ingredients_component}
-        recipeData={recipeData}
-      />
-      <p>{recipeData.instructions}</p>
+      <section className={styles.recipe_view_main}>
+        <RecipeViewImage 
+          className={styles.recipe_view_image}
+          src={recipeData.thumbnail}
+        />
+        <p>{recipeData.name}</p>
+        <IngredientsComponent
+          className={styles.ingredients_component}
+          recipeData={recipeData}
+        />
+        <p>{recipeData.instructions}</p>
+      </section>
     </section>
   );
 };

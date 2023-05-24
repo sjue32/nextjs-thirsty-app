@@ -1,23 +1,25 @@
 'use client'
 
 import styles from '../page.module.css'
-import useSWRImmutable from 'swr/immutable';
+// import useSWRImmutable from 'swr/immutable';
 
-import { useEffect, useRef } from 'react';
+// import { useEffect, useRef } from 'react';
 import { DrinkListCell } from './DrinkListCell'
 import { EmptyDrinkListCell } from './EmptyDrinkListCell'
 
-import { debounce } from 'lodash';
+// import { debounce } from 'lodash';
 
 type DrinkListProps = {
   searchQuery: string;
+  searchData: SearchDataProps;
   setRecipeData: React.Dispatch<React.SetStateAction<formattedDataProps>>;
   setMobileRecipeViewActive: React.Dispatch<React.SetStateAction<boolean>>;
-  setRecipeActive: React.Dispatch<React.SetStateAction<boolean>>
+  setRecipeActive: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 type formattedDataProps = {
   name: string;
+  thumbnail: string;
   instructions: string;
   ingredients: string[],
   colors: string[],
@@ -25,8 +27,9 @@ type formattedDataProps = {
   chartColors: string[],
 };
 
-type RawDrinkDataProp = 
-  {
+type SearchDataProps = Record<string, null | RawDrinkDataProp[]>;
+
+type RawDrinkDataProp = {
     strDrink: string;
     strDrinkThumb: string;
     strIngredient1: string | null;
@@ -51,22 +54,12 @@ type rawServerDataProp = {
   drinks: unknown[];
 }
 
-const fetcher = (url: string) => fetch(url).then((res) => res.json());
+export default function DrinkList ({ searchQuery, searchData, setRecipeData, setMobileRecipeViewActive, setRecipeActive }: DrinkListProps) {
 
-export default function DrinkList ({ searchQuery, setRecipeData, setMobileRecipeViewActive, setRecipeActive }: DrinkListProps) {
-
-  const parsedQuery = searchQuery.split(' ').join('+');
-  const url = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${parsedQuery}`;
-
-  // let data: Record<string,unknown>;
-  // let error: unknown;
-
-  // add error handling ... 
-  const { data, error } = useSWRImmutable(url, fetcher);
   let rawDrinkData;
   
-  if(data) {
-    rawDrinkData = data.drinks;
+  if(searchData) {
+    rawDrinkData = searchData.drinks;
   }
 
   const dataLength = !rawDrinkData ? 0 : rawDrinkData.length;
@@ -86,7 +79,7 @@ export default function DrinkList ({ searchQuery, setRecipeData, setMobileRecipe
     <section className={`${styles.drinkList} ${styles.scroller}`}>
       {
         rawDrinkData !== undefined ? 
-        rawDrinkData.map((drink: RawDrinkDataProp, idx: number) => {
+        rawDrinkData?.map((drink: RawDrinkDataProp, idx: number) => {
 
           return(
             <DrinkListCell 

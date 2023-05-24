@@ -57,6 +57,34 @@
   border-style: none;
 }
 
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrapper .arrow {
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 1.25rem;
+  background: rgb(163, 163, 163);
+}
+
+.arrow .line {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  width: 1rem;
+  height: 0.2rem;
+  border-radius: 2px;
+  background: lightgray;
+  transform-origin: center;
+  transform: translate(-50%, 10%) rotate(45deg);
+}
+.arrow .line:nth-child(2) {
+  transform: translate(-55%, -70%) rotate(-45deg);
+}
+
 .drinkThumbnail {
   border-radius: 10px;
   padding: 10px 15px 10px 10px;
@@ -134,12 +162,19 @@
   height: 0;
 }
 
-.recipe_view > p:first-of-type {
+.recipe_view_main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.recipe_view_main > p:first-of-type {
   font-size: 1.25rem;
   font-weight: bold;
 }
 
-.recipe_view > p:last-of-type {
+.recipe_view_main > p:last-of-type {
   font-size: 1rem;
   font-weight: normal;
   margin: 0 1rem 0 1rem;
@@ -205,9 +240,6 @@
 
 /* Mobile */
 @media (max-width: 700px) {
-  .scroller {
-    overflow-y: scroll;
-  }
 
   .main {
     width: 100%;
@@ -216,38 +248,39 @@
   .main_container {
     width: 100%;
     z-index: 1;
+    border: none;
   }
 
   .top {
-    height: 100px;
+    height: 6.25rem;
     position: fixed;
     width: 100%;
   }
 
   .top p {
     font-size: 1.25rem;
-    margin: auto auto 10px auto;
+    margin: auto auto 0.625rem auto;
   }
 
   .searchbar_container {
     position: fixed;
-    height: 60px;
+    height: 3.75rem;
     width: 100%;
-    padding: 10px;
+    padding: 0.625rem;
     color: black;
     background-color: white;
     border-top: 1px solid lightgray;
     border-bottom: 1px solid lightgray;
 
-    margin-top: 100px;
+    margin-top: 6.25rem;
 
   }
 
   .searchbar {
     color: black;
-    font-size: 17px;
+    font-size: 1rem;
     padding:10px;
-    border-radius: 8px;
+    border-radius: 0.5rem;
     margin: auto;
     background-color: rgb(231, 227, 227);
     border-style: none;
@@ -256,7 +289,7 @@
   .drinkList {
     width: 100%;
     padding-right: 10px;
-    margin-top: 158px;
+    margin-top: 9.875rem;
   }
 
   .drinkCellOuter {
@@ -273,7 +306,7 @@
     border-left-style: none;
     border-right-style: none;
     border-bottom-style: none;
-    font-size: 17px;
+    font-size: 1rem;
   }
 
   .drinkListCellLeft {
@@ -303,6 +336,7 @@
     width: 100vw;
     z-index: 5;
     background-color: white;
+    border: none;
   }
 
   .recipe_view_visible {
@@ -316,9 +350,12 @@
   }
 
   .recipe_view_top {
+
+    position: fixed;
+
     display: flex;
     flex-direction: row;
-    height: 100px;
+    height: 6.25rem;
     width: 100%;
     /* margin-bottom: 0.6rem; */
     /* font-family: var(--font-mono); */
@@ -352,38 +389,45 @@
     color: rgb(118, 130, 212);
   }
 
-  .recipe_view > p:first-of-type {
-    font-size: 20px;
+  .recipe_view_main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 6.25rem;
+  }
+
+  .recipe_view_main > p:first-of-type {
+    font-size: 1.25rem;
     font-weight: bold;
   }
 
-  .recipe_view > p:last-of-type {
-    font-size: 17px;
+  .recipe_view_main > p:last-of-type {
+    font-size: 1rem;
     font-weight: normal;
-    margin: 0px 15px 0px 15px;
+    margin: 0 1rem 0 1rem;
   }
 
   .recipe_view_image {
     border-radius: 50%;
-    margin-top: 30px;
-    margin-bottom: 20px;
+    margin-top: 1.9rem;
+    margin-bottom: 1.25rem;
   }
 
   .ingredients_component {
     width: 100%;
-    margin: 30px 0px 30px 0px;
+    margin: 1.9rem 0 1.9rem 0;
     display: flex;
     flex-direction: column;
     align-items: left;
   }
 
   .ingredients_component  p {
-    font-size: 17px;
+    font-size: 1rem;
   }
 
   .ingredients_component > p:first-of-type {
     font-weight: bold;
-    padding-left: 15px;
+    padding-left: 1rem;
   }
 
   .chart_container {
@@ -391,7 +435,7 @@
     display: flex;
     flex-direction: row;
     justify-content:space-between;
-    padding: 20px 20px 0px 20px;
+    padding: 1.25rem 1.25rem 0 1.25rem;
   }
 
   .legend {
@@ -399,23 +443,23 @@
   }
 
   .ingredient_row p {
-    font-size: 17px;
+    font-size: 1rem;
   }
 
   .ingredient_row {
     display: flex;
     flex-direction: row;
-    margin: 5px 0px 5px 0px;
+    margin: 0.3rem 0 0.3rem 0;
   }
 
   .legend_color_square {
-    height: 20px;
-    width: 20px;
-    margin-right: 5px;
+    height: 1.25rem;
+    width: 1.25rem;
+    margin-right: 0.3rem;
   }
 
   .pie_chart {
-    height: 120px;
-    width: 120px;
+    height: 7.5rem;
+    width: 7.5rem;
   }
 }
