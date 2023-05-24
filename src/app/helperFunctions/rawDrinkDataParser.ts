@@ -1,10 +1,7 @@
 
-// type rawDrinkDataProps = {
-
-// }
-
 type formattedDataProps = {
   name: string;
+  instructions: string;
   ingredients: string[],
   colors: string[],
   measurementValues: number[],
@@ -26,13 +23,8 @@ const drinkUnits = {
   tsp: 1,
 }
 
-
-
 // random color picker function that keeps track of already chosen colors
 function randomColorPicker() {
-
-  // const pastelColors = ['#ff9899', '#ca9bf7',  '#ffb7ce', '#c1c6fc', '#befd73', '#bee7a5', 
-  // '#89cff0', '#c6a4a4', '#9adedb', '#836953'];
 
   const pastelColorsAlt = ['rgba(255, 152, 153, 1)', 'rgba(202, 155, 247, 1)', 'rgba(255, 183, 206, 1)',
   'rgba(193, 198, 252, 1)', 'rgba(190, 253, 115, 1)', 'rgba(190, 231, 165, 1)', 
@@ -44,7 +36,6 @@ function randomColorPicker() {
     const randomNum = Math.floor(Math.random() * pastelColorsAlt.length);
     let randomColor = pastelColorsAlt[randomNum];
     pastelColorsAlt.splice(randomNum, 1);
-    console.log('pastelColorsAlt length: ', pastelColorsAlt.length);
 
     return randomColor;
   }
@@ -179,7 +170,6 @@ function ingredientParser(rawDrinkData: Record<string, string | null>, formatted
   return;
 }
 
-
 // function takes in raw data for one drink
 
 // it will return a new object that contains the name with measurements, ingredients, random 
@@ -191,10 +181,9 @@ function ingredientParser(rawDrinkData: Record<string, string | null>, formatted
 
 export default function rawDrinkDataParser(rawDrinkData: Record<string, string | null>) {
 
-  console.log('inside rawDrinkDataParser');
-
   const formattedData = {
     name: rawDrinkData.strDrink as string,
+    instructions: rawDrinkData.strInstructions as string,
     ingredients: [],
     colors: [],
     measurementValues: [],
@@ -203,7 +192,6 @@ export default function rawDrinkDataParser(rawDrinkData: Record<string, string |
   // parse data to fill out all data arrays
   ingredientParser(rawDrinkData, formattedData);
 
-  // return formattedDrinkData??? where is this being passed back to???
   return formattedData;
 }
 
