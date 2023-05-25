@@ -158,7 +158,7 @@
 }
 
 .recipe_view_top {
-  height: 7.5rem;
+  height: 15%;
   width: 100%;
   background-color: rgb(240, 237, 237);
   display: flex;
@@ -188,6 +188,8 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
+  height: 85%;
+  overflow: auto;
 }
 
 .recipe_view_main > p:first-of-type {
@@ -302,9 +304,7 @@
     background-color: white;
     border-top: 1px solid lightgray;
     border-bottom: 1px solid lightgray;
-
     margin-top: 6.25rem;
-
   }
 
   .searchbar {
@@ -320,12 +320,12 @@
   .drinkList {
     height: auto;
     width: 100%;
-    padding-right: 10px;
+    padding-right: 0.625rem;
     margin-top: 9.875rem;
   }
 
   .drinkCellOuter {
-    height: 60px;
+    height: 3.75rem;
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -382,21 +382,20 @@
   }
 
   .recipe_view_top {
-
     position: fixed;
-
     display: flex;
     flex-direction: row;
-    height: 6.25rem;
+    /* height: 6.25rem; */
+    height: 5.85rem;
     width: 100%;
     background-color: rgb(240, 237, 237);
+    padding-bottom: 0.625rem;
   }
 
   .recipe_view_top > section {
     display: flex;
     flex-direction: column-reverse;
     width: 33%;
-    margin-bottom: 0.6rem;
   }
 
   .recipe_view_top > section:last-of-type, .recipe_view_top > section:first-of-type {
@@ -424,6 +423,7 @@
     flex-direction: column;
     align-items: center;
     margin-top: 6.25rem;
+    height: 95%;
   }
 
   .recipe_view_main > p:first-of-type {

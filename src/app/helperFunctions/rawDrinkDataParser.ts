@@ -1,13 +1,4 @@
-
-type formattedDataProps = {
-  name: string;
-  thumbnail: string;
-  instructions: string;
-  ingredients: string[],
-  colors: string[],
-  measurementValues: number[],
-  chartColors: string[],
-};
+import { RecipeDataProps } from "../types/types";
 
 // conversion from other units to tsp
 const drinkUnits = {
@@ -130,7 +121,7 @@ function convertMeasurementUnits(measurement: string | null) {
 
 
 }
-function ingredientParser(rawDrinkData: Record<string, string | null>, formattedData: formattedDataProps) {
+function ingredientParser(rawDrinkData: Record<string, string | null>, formattedData: RecipeDataProps) {
 
   // iterate while valid ingredients still exist
   // strIngredient1 -> strIngredient15
