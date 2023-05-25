@@ -1,6 +1,7 @@
 
 type formattedDataProps = {
   name: string;
+  thumbnail: string;
   instructions: string;
   ingredients: string[],
   colors: string[],
@@ -183,6 +184,7 @@ export default function rawDrinkDataParser(rawDrinkData: Record<string, string |
 
   const formattedData = {
     name: rawDrinkData.strDrink as string,
+    thumbnail: `${rawDrinkData.strDrinkThumb}/preview`,
     instructions: rawDrinkData.strInstructions as string,
     ingredients: [],
     colors: [],

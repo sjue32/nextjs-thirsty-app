@@ -1,12 +1,9 @@
-
 import styles from '../page.module.css'
 
-const EmptyDrinkListCell = () => {
+export default function EmptyDrinkListCell () {
 
   return (
     <div className={styles.drinkCellOuter}>
     </div>
   );
 };
-
-export { EmptyDrinkListCell };

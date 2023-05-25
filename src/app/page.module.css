@@ -11,7 +11,18 @@
   align-items: center;
   width: 45%;
   border: solid rgb(156, 152, 152);
-  height: 100vh;
+  border-radius: 1rem;
+  height: 97vh;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+
+}
+
+.shadow4 {
+  box-shadow: 0 1px 1px rgba(0,0,0,0.15), 
+              0 2px 2px rgba(0,0,0,0.15), 
+              0 4px 4px rgba(0,0,0,0.15), 
+              0 8px 8px rgba(0,0,0,0.15);
 }
 
 .top {
@@ -23,6 +34,8 @@
   width: 100%;
   z-index: 2;
   background-color: rgb(240, 237, 237);
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
   
   height: 15%;
 }
@@ -34,6 +47,7 @@
 
 .searchbar_container {
   position: relative;
+  display: inline-block;
   height: 8%;
   width: 100%;
 
@@ -50,11 +64,37 @@
 
   color: black;
   font-size: 1rem;
-  padding:10px;
+  padding: 0.625rem 0.625rem 0.625rem 2.1rem;
   border-radius: 0.5rem;
   margin: auto;
   background-color: rgb(231, 227, 227);
   border-style: none;
+}
+
+.search_icon {
+  display: inline-block;
+  position: absolute;
+  top: 1.3rem;
+  left: 1.2rem;
+  height: 1.25rem;
+  width: 1.25rem;
+}
+
+.clear_button {
+  border: none;
+  background: rgb(149, 147, 147);
+  border-radius: 50%;
+  height: 1.2rem;
+  width: 1.2rem;
+  /* position */
+  position: absolute;
+  top: 1.35rem;
+  right: 1.6rem;
+  color: white;
+}
+
+.clear_button:hover {
+  background-color: rgb(174, 171, 171);
 }
 
 .drinkThumbnail {
@@ -68,6 +108,7 @@
   margin-top: -5px;
   height: 77%;
   overflow: auto;
+  border-bottom-left-radius: 1rem;
 }
 
 .drinkCellOuter {
@@ -96,7 +137,7 @@
 
 .drinkThumbnail {
   border-radius: 50%;
-  padding: 10px 15px 10px 10px;
+  padding: 0.625rem 0.625rem 0.625rem 0.625rem;
 }
 
 .exit_button {
@@ -106,6 +147,11 @@
 .recipe_view, .empty_recipe_view {
   width: 45%;
   border: solid rgb(156, 152, 152);
+  border-radius: 1rem;
+  height: 97vh;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -118,6 +164,9 @@
   display: flex;
   flex-direction: column-reverse;
   border-bottom: 1px solid lightgray;
+
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
 }
 
 .recipe_view_top button {
@@ -134,12 +183,19 @@
   height: 0;
 }
 
-.recipe_view > p:first-of-type {
+.recipe_view_main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.recipe_view_main > p:first-of-type {
   font-size: 1.25rem;
   font-weight: bold;
 }
 
-.recipe_view > p:last-of-type {
+.recipe_view_main > p:last-of-type {
   font-size: 1rem;
   font-weight: normal;
   margin: 0 1rem 0 1rem;
@@ -152,7 +208,6 @@
 
 .ingredients_component {
   width: 100%;
-  /* padding-left: 15px; */
   margin: 1.9rem 0 1.9rem 0;
   display: flex;
   flex-direction: column;
@@ -161,11 +216,9 @@
 
 .ingredients_component p {
   font-size: 1rem;
-  /* font-weight: bold; */
 }
 
 .ingredients_component > p:first-of-type {
-  /* font-size: 17px; */
   font-weight: bold;
   padding-left: 15px;
 }
@@ -204,59 +257,71 @@
 }
 
 /* Mobile */
-@media (max-width: 700px) {
-  .scroller {
-    overflow-y: scroll;
+@media (min-width: 950px) {
+  .main {
+    margin: auto;
+    width: 950px;
   }
+}
+
+/* Mobile */
+@media (max-width: 700px) {
 
   .main {
     width: 100%;
   }
 
   .main_container {
+    height: 100vh;
+    margin: 0;
     width: 100%;
     z-index: 1;
+    border: none;
+    border-radius: 0;
+
   }
 
   .top {
-    height: 100px;
+    height: 6.25rem;
     position: fixed;
     width: 100%;
+    border-radius: 0;
   }
 
   .top p {
     font-size: 1.25rem;
-    margin: auto auto 10px auto;
+    margin: auto auto 0.625rem auto;
   }
 
   .searchbar_container {
     position: fixed;
-    height: 60px;
+    height: 3.75rem;
     width: 100%;
-    padding: 10px;
+    padding: 0.625rem;
     color: black;
     background-color: white;
     border-top: 1px solid lightgray;
     border-bottom: 1px solid lightgray;
 
-    margin-top: 100px;
+    margin-top: 6.25rem;
 
   }
 
   .searchbar {
     color: black;
-    font-size: 17px;
-    padding:10px;
-    border-radius: 8px;
+    font-size: 1rem;
+    padding: 0.625rem 0.625rem 0.625rem 2.1rem;
+    border-radius: 0.5rem;
     margin: auto;
     background-color: rgb(231, 227, 227);
     border-style: none;
   }
 
   .drinkList {
+    height: auto;
     width: 100%;
     padding-right: 10px;
-    margin-top: 158px;
+    margin-top: 9.875rem;
   }
 
   .drinkCellOuter {
@@ -273,7 +338,7 @@
     border-left-style: none;
     border-right-style: none;
     border-bottom-style: none;
-    font-size: 17px;
+    font-size: 1rem;
   }
 
   .drinkListCellLeft {
@@ -285,7 +350,7 @@
 
   .drinkThumbnail {
     border-radius: 50%;
-    padding: 10px 15px 10px 10px;
+    padding: 0.625rem 0.625rem 0.625rem 0.625rem;
   }
 
   .empty_recipe_view {
@@ -303,6 +368,7 @@
     width: 100vw;
     z-index: 5;
     background-color: white;
+    border: none;
   }
 
   .recipe_view_visible {
@@ -316,12 +382,13 @@
   }
 
   .recipe_view_top {
+
+    position: fixed;
+
     display: flex;
     flex-direction: row;
-    height: 100px;
+    height: 6.25rem;
     width: 100%;
-    /* margin-bottom: 0.6rem; */
-    /* font-family: var(--font-mono); */
     background-color: rgb(240, 237, 237);
   }
 
@@ -352,38 +419,45 @@
     color: rgb(118, 130, 212);
   }
 
-  .recipe_view > p:first-of-type {
-    font-size: 20px;
+  .recipe_view_main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 6.25rem;
+  }
+
+  .recipe_view_main > p:first-of-type {
+    font-size: 1.25rem;
     font-weight: bold;
   }
 
-  .recipe_view > p:last-of-type {
-    font-size: 17px;
+  .recipe_view_main > p:last-of-type {
+    font-size: 1rem;
     font-weight: normal;
-    margin: 0px 15px 0px 15px;
+    margin: 0 1rem 0 1rem;
   }
 
   .recipe_view_image {
     border-radius: 50%;
-    margin-top: 30px;
-    margin-bottom: 20px;
+    margin-top: 1.9rem;
+    margin-bottom: 1.25rem;
   }
 
   .ingredients_component {
     width: 100%;
-    margin: 30px 0px 30px 0px;
+    margin: 1.9rem 0 1.9rem 0;
     display: flex;
     flex-direction: column;
     align-items: left;
   }
 
   .ingredients_component  p {
-    font-size: 17px;
+    font-size: 1rem;
   }
 
   .ingredients_component > p:first-of-type {
     font-weight: bold;
-    padding-left: 15px;
+    padding-left: 1rem;
   }
 
   .chart_container {
@@ -391,7 +465,7 @@
     display: flex;
     flex-direction: row;
     justify-content:space-between;
-    padding: 20px 20px 0px 20px;
+    padding: 1.25rem 1.25rem 0 1.25rem;
   }
 
   .legend {
@@ -399,23 +473,23 @@
   }
 
   .ingredient_row p {
-    font-size: 17px;
+    font-size: 1rem;
   }
 
   .ingredient_row {
     display: flex;
     flex-direction: row;
-    margin: 5px 0px 5px 0px;
+    margin: 0.3rem 0 0.3rem 0;
   }
 
   .legend_color_square {
-    height: 20px;
-    width: 20px;
-    margin-right: 5px;
+    height: 1.25rem;
+    width: 1.25rem;
+    margin-right: 0.3rem;
   }
 
   .pie_chart {
-    height: 120px;
-    width: 120px;
+    height: 7.5rem;
+    width: 7.5rem;
   }
 }

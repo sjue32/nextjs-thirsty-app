@@ -1,21 +1,11 @@
+import styles from '../page.module.css';
+
 import Legend from "./Legend";
 import PieChart from "./PieChart";
 
-import styles from '../page.module.css';
+import { RecipeDataProps } from '../types/types';
 
-type drinkDataProp = {
-  name: string,
-  ingredients: string[],
-  colors: string[],
-  measurementValues: number[],
-  chartColors: string[],
-}
-
-type ChartContainerProp = {
-  recipeData: drinkDataProp;
-}
-
-export default function ChartContainer({ recipeData }: ChartContainerProp) {
+export default function ChartContainer({ recipeData }: { recipeData: RecipeDataProps }) {
 
   return(
     <section className={styles.chart_container}>

@@ -1,9 +1,9 @@
-import { EmptyDrinkListCell } from "./EmptyDrinkListCell";
 import styles from '../page.module.css';
+import EmptyDrinkListCell from "./EmptyDrinkListCell";
 
 export default function EmptyDrinkList() {
 
-  const emptyCellArray = Array(10).fill(true);
+  const emptyCellArray = Array(12).fill(true);
   return (
     <section className={styles.drinkList}>
       { emptyCellArray.map((elem, idx) => {
@@ -13,5 +13,4 @@ export default function EmptyDrinkList() {
       }) }
     </section>
   );
-
 }
