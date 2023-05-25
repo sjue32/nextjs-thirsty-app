@@ -1,8 +1,4 @@
-import styles from '../page.module.css';
-
-type ExitButtonProp = {
-  setMobileRecipeViewActive: React.Dispatch<React.SetStateAction<boolean>>;
-}
+import { ExitButtonProp } from "../types/types";
 
 export default function ExitButton({ setMobileRecipeViewActive }: ExitButtonProp) {
 

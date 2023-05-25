@@ -1,31 +1,17 @@
-import { Chart } from "react-chartjs-2";
+import styles from '../page.module.css';
 import ChartContainer from "./ChartContainer";
 
-type drinkDataProp = {
-  name: string,
-  ingredients: string[],
-  colors: string[],
-  measurementValues: number[],
-  chartColors: string[],
-}
+import { RecipeDataProps } from '../types/types';
 
-type IngredientsComponentProp = {
-  className: string;
-  recipeData: drinkDataProp;
-}
-
-export default function IngredientsComponent({ className, recipeData } : IngredientsComponentProp) {
+export default function IngredientsComponent({ recipeData } : { recipeData: RecipeDataProps}) {
 
   return (
-    <section className={className}>
+    <section className={styles.ingredients_component}>
       <p>Ingredients:</p>
       <ChartContainer 
         recipeData={recipeData}
       />
-
-
     </section>
   );
-
 }
 

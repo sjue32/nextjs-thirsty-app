@@ -2,33 +2,11 @@
 
 import styles from '../page.module.css';
 import useDebounce from '../hooks/useDebounce';
+import Image from 'next/image';
+import searchIcon from '../images/icons8-search.svg';
 
-type SearchBarProps = {
-  className: string;
-  searchQuery: string;
-  setSearchQuery: React.Dispatch<React.SetStateAction<string>>;
-  setSearchData: React.Dispatch<React.SetStateAction<SearchDataProps>>;
-}
-
-type SearchDataProps = Record<string, null | RawDrinkDataProp[]>;
-
-type RawDrinkDataProp = 
-  {
-    strDrink: string;
-    strDrinkThumb: string;
-    strIngredient1: string | null;
-    strIngredient2: string | null;
-    strIngredient3: string | null;
-    strIngredient4: string | null;
-    strIngredient5: string | null;
-    strIngredient6: string | null;
-    strMeasure1: string | null;
-    strMeasure2: string | null;
-    strMeasure3: string | null;
-    strMeasure4: string | null;
-    strMeasure5: string | null;
-    strMeasure6: string | null;
-  }
+// type aliases
+import { SearchBarProps,SearchDataProps } from '../types/types';
 
 export default function SearchBar ({className, searchQuery, setSearchQuery, setSearchData } : SearchBarProps) {
 
@@ -40,28 +18,47 @@ export default function SearchBar ({className, searchQuery, setSearchQuery, setS
 
     const res = await fetch(url);
     const data = await res.json();
-    // console.log('data from fetch: ', data);
     setSearchData(data);
   }
 
   const debouncedRequest = useDebounce(fetchRawDrinkData);
 
-  function changeHandler(event: React.ChangeEvent<HTMLInputElement>) {
+  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     const value = event.target.value;
     searchQuery = value;
     debouncedRequest();
     setSearchQuery(value);
   }
 
+  function handleClearButtonClick(event: React.MouseEvent<HTMLButtonElement>) {
+    event.preventDefault();
+    setSearchQuery('');
+  };
+
   return (
-    <section className={styles.searchbar_container}>
+    <form className={styles.searchbar_container}>
+      <div className={styles.search_icon}>
+        <Image
+          src={searchIcon}
+          alt=''
+          height={20}
+          width={20}
+        />
+       </div>
       <input 
+        type='text'
         placeholder='Find A Drink' 
         className={className} 
         value={searchQuery}
-        onChange={changeHandler} 
-        type='search'
+        onChange={handleChange} 
       />
-    </section>
+      <button 
+        className={styles.clear_button}
+        aria-label='Clear input'
+        onClick={handleClearButtonClick}
+      >
+        X
+      </button>
+    </form>
   );
 };
